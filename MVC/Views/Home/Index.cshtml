@@ -1,0 +1,69 @@
+﻿@model BLL.Entities.DataBLL
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<h4>Всякое</h4>
+<div class="Recipe">
+    <h3>Рецепт номер @Model.ProcessData.Recipes.First().RecipeName</h3>
+    @foreach (var property in Model.RecipeData.recipes)
+    {
+
+        if (property.Attributes.Count() != 0)
+        {
+            //            if (property.Attributes.FirstOrDefault(a=>a.Key == "BrowsableAttribute").Value.Count !=0)
+            var abc = property.Attributes.FirstOrDefault(a => a.Key == "BrowsableAttribute").Value.First().Value.ToString();
+            if (property.Attributes.FirstOrDefault(a=>a.Key == "BrowsableAttribute").Value.First().Value.ToString() == "True")
+            {
+            <text> @property.Attributes.FirstOrDefault(a=>a.Key == "DisplayNameAttribute").Value.Values.First().ToString() = @property.Value; </text>
+                <br/>
+            }
+        }
+        else
+        {
+            <text>@property.Key =  @property.Value; </text>
+        }
+                
+    }
+</div>
+        
+<div>
+    <h3>Отчёты:</h3>
+    @for (var index = 0; index < Model.ProcessData.Reports.Count; index++)
+    {
+        var report = Model.ProcessData.Reports[index];
+        @:<div class ="col-lg-2,col-md-3,col-sm-4">
+        @:<text>Дата = @report.Date
+        @:</text><br/>
+        @:<text>Номер операции = @report.Number 
+        @:</text><br/>
+        @:<text>Имя операции = @report.ReportName 
+        @:</text><br/>
+        @:<text>Время операции = @report.wTimeOperation
+        @:</text><br/>
+        @:<text>Тип операции = @report.Operation
+        @:</text><br/><br/>
+        @:Много всяких данных: <br/>
+        foreach (var properti in Model.ReportDictionary[index])
+        {
+            <text> @properti.Key =  @properti.Value;    </text> <br/>
+        }
+        <br/>
+        @:</div>
+    }
+
+</div>
+     
+<p>
+</p>
+</body>
+</html>
