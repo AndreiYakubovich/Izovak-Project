@@ -11,8 +11,8 @@ namespace BLL.Entities
     {
         
         public ProcessData ProcessData { get; set; }
-        public RecipeData RecipeData { get; set; }
-        public List<Dictionary<string,object>> ReportDictionary { get; set; }
+        public List<InitOfData> RecipeData { get; set; }
+        public List<InitOfData> ReportData { get; set; }
         
     }
 }

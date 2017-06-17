@@ -13,8 +13,8 @@ namespace MVC.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using BLL.Services;
-    using ConsoleApp1.Interfaces;
-    using ConsoleApp1.Service;
+    using DAL.Interfaces;
+    using DAL.Service;
 
     public static class NinjectWebCommon 
     {

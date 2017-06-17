@@ -4,7 +4,7 @@ using System.Reflection;
 using BLL.Entities;
 using BLL.Interfaces;
 using ClassGenerator;
-using ConsoleApp1.Interfaces;
+using DAL.Interfaces;
 
 namespace BLL.Services
 {
@@ -61,13 +61,30 @@ namespace BLL.Services
         }
 
 
-        private RecipeData GetRecipeData(ProcessData process)
+        private List<InitOfData> GetData(ProcessData process, string entity)
         {
-            var recipeData = new RecipeData();
-         
-            recipeData.Recipes = GetAllProperties(process.Recipes[0]);
-            recipeData.Chapters = GetChapters(recipeData.Recipes);
-           return recipeData;
+            var data = new List<InitOfData>();
+            dynamic source = process.Recipes;
+            switch (entity)
+            {
+                case "Recipe":
+                {
+                    source = process.Recipes;
+                    break;
+                }
+                case "Report":
+                {
+                    source = process.Reports;
+                    break;
+                }   
+            }
+            for (var index = 0; index < source.Count; index++)
+            {
+                data.Add(new InitOfData());
+                data[index].Properties = GetAllProperties(source[index]);
+                data[index].Chapters = GetChapters(data[index].Properties);
+            }
+            return data;
         }
 
 
@@ -87,24 +104,13 @@ namespace BLL.Services
             return chapters;
         }
 
-
-        private static Dictionary<string, object> GetReportData(ProcessData process, int key)
-        {
-            object report = process.Reports[key];
-            return report.GetType().GetProperties().ToDictionary(property => property.Name, property => property.GetValue(report));
-        }
-
-
         public DataBLL GetProcessData(int Id)
         {
-            var data = new DataBLL {ReportDictionary = new List<Dictionary<string, object>>()};
+            var data = new DataBLL();
             var process = DALInterface1.GetDataById(Id);
             data.ProcessData = process;
-            data.RecipeData = GetRecipeData(process);
-            for (var key = 0; key < process.Reports.Count; key++)
-            {
-                data.ReportDictionary.Add(GetReportData(process, key));
-            }
+            data.RecipeData = GetData(process,"Recipe");
+            data.ReportData = GetData(process, "Report");
             return data;
         }
 

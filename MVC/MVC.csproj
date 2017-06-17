@@ -244,13 +244,13 @@
       <Project>{458CC882-5A2D-4668-B4D9-E9968E7B187B}</Project>
       <Name>ClassGenerator</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\ConsoleApp1\ConsoleApp1\DAL_new.csproj">
-      <Project>{5998A309-FFF4-4426-9D47-061E60EABB2A}</Project>
-      <Name>DAL_new</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{C7104727-3DD7-49E7-81B6-895D281603E2}</Project>
       <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{5998A309-FFF4-4426-9D47-061E60EABB2A}</Project>
+      <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

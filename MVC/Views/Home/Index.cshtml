@@ -15,16 +15,40 @@
 <h4>Всякое</h4>
 <div class="Recipe">
     <h3>Рецепт номер @Model.ProcessData.Recipes.First().RecipeName</h3>
-    @foreach (var property in Model.RecipeData.Recipes)
+    
+    @foreach (var chapter in Model.RecipeData.First().Chapters)
+    {
+        <div>
+            <h3> @chapter.ToString()</h3> 
+            
+            @foreach (var property in Model.RecipeData.First().Properties)
+            {
+                if (property.Attributes.Count() != 0 && property.Attributes.First(p=>p.Key== "CategoryAttribute").Value.ToString() == chapter.ToString())
+                {
+                    //            if (property.Attributes.FirstOrDefault(a=>a.Key == "BrowsableAttribute").Value.Count !=0)
+                    var abc = property.Attributes.FirstOrDefault(a => a.Key == "BrowsableAttribute").Value;
+                    if (property.Attributes.FirstOrDefault(a => a.Key == "BrowsableAttribute").Value.ToString() == "True")
+                    {
+                        <text> @property.Attributes.FirstOrDefault(a => a.Key == "DisplayNameAttribute").Value.ToString() = @property.Value; </text>
+                        <br/>
+                    }
+                }
+            }
+
+        </div>
+    }
+
+
+   @* @foreach (var property in Model.RecipeData.First().Properties)
     {
 
-        if (property.GroupAttributes.Count() != 0)
+        if (property.Attributes.Count() != 0)
         {
             //            if (property.Attributes.FirstOrDefault(a=>a.Key == "BrowsableAttribute").Value.Count !=0)
-            var abc = property.GroupAttributes.FirstOrDefault(a => a.Key == "BrowsableAttribute").Value.First().Value.ToString();
-            if (property.GroupAttributes.FirstOrDefault(a=>a.Key == "BrowsableAttribute").Value.First().Value.ToString() == "True")
+            var abc = property.Attributes.FirstOrDefault(a => a.Key == "BrowsableAttribute").Value;
+            if (property.Attributes.FirstOrDefault(a=>a.Key == "BrowsableAttribute").Value.ToString() == "True")
             {
-            <text> @property.GroupAttributes.FirstOrDefault(a=>a.Key == "DisplayNameAttribute").Value.Values.First().ToString() = @property.Value; </text>
+            <text> @property.Attributes.FirstOrDefault(a=>a.Key == "DisplayNameAttribute").Value.ToString() = @property.Value; </text>
                 <br/>
             }
         }
@@ -33,7 +57,7 @@
             <text>@property.Key =  @property.Value; </text>
         }
                 
-    }
+    }*@
 </div>
         
 <div>
@@ -53,10 +77,10 @@
         @:<text>Тип операции = @report.Operation
         @:</text><br/><br/>
         @:Много всяких данных: <br/>
-        foreach (var properti in Model.ReportDictionary[index])
+       @* foreach (var properti in Model.ReportDictionary[index])
         {
             <text> @properti.Key =  @properti.Value;    </text> <br/>
-        }
+        }*@
         <br/>
         @:</div>
     }

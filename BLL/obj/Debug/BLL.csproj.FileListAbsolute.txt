@@ -2,7 +2,7 @@ C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\BLL\bin\Debug\BLL.dll
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\BLL\bin\Debug\BLL.pdb
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\BLL\bin\Debug\ClassGenerator.dll
-C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\BLL\bin\Debug\ConsoleApp1.dll
+C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\BLL\bin\Debug\DAL.dll
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\BLL\bin\Debug\EntityFramework.dll
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\BLL\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\BLL\bin\Debug\System.Data.SQLite.dll
@@ -10,8 +10,8 @@ C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\BLL\bin\Debug\System.Data.SQLite.Linq.dll
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\BLL\bin\Debug\MathNet.Numerics.dll
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\BLL\bin\Debug\ClassGenerator.pdb
-C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\BLL\bin\Debug\ConsoleApp1.pdb
-C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\BLL\bin\Debug\ConsoleApp1.dll.config
+C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\BLL\bin\Debug\DAL.pdb
+C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\BLL\bin\Debug\DAL.dll.config
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\BLL\bin\Debug\EntityFramework.xml
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\BLL\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\BLL\bin\Debug\System.Data.SQLite.xml

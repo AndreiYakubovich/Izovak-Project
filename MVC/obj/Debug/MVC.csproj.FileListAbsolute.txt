@@ -53,7 +53,6 @@ C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\MVC\bin\Antlr3.Runtime.dll
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\MVC\bin\BLL.dll
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\MVC\bin\ClassGenerator.dll
-C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\MVC\bin\ConsoleApp1.dll
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\MVC\bin\EntityFramework.dll
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\MVC\bin\EntityFramework.SqlServer.dll
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\MVC\bin\Microsoft.AI.Agent.Intercept.dll
@@ -83,8 +82,6 @@ C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\MVC\bin\WebGrease.dll
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\MVC\bin\MathNet.Numerics.dll
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\MVC\bin\ClassGenerator.pdb
-C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\MVC\bin\ConsoleApp1.pdb
-C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\MVC\bin\ConsoleApp1.dll.config
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\MVC\bin\BLL.pdb
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\MVC\bin\BLL.dll.config
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\MVC\bin\Antlr3.Runtime.pdb
@@ -113,3 +110,6 @@ C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\MVC\obj\Debug\MVC.csprojResolveAssemblyReference.cache
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\MVC\obj\Debug\MVC.dll
 C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\MVC\obj\Debug\MVC.pdb
+C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\MVC\bin\DAL.dll
+C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\MVC\bin\DAL.pdb
+C:\Users\Andrei Yakubovich\documents\visual studio 2017\Projects\IzovakRecipies\MVC\bin\DAL.dll.config
