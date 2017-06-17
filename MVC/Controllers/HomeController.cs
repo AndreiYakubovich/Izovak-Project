@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Routing;
+using BLL.Entities;
 using BLL.Interfaces;
 using ClassGenerator;
 
@@ -26,7 +27,7 @@ namespace MVC.Controllers
             List<SelectListItem> processes = new List<SelectListItem>();
             processes.Add(new SelectListItem { Text = "", Value = "0" });
 //            Service.GetProcessDataCount();
-
+           
             ViewBag.MovieType = processes;
             return View(Data);
         }

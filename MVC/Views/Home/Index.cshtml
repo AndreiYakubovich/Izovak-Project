@@ -15,16 +15,16 @@
 <h4>Всякое</h4>
 <div class="Recipe">
     <h3>Рецепт номер @Model.ProcessData.Recipes.First().RecipeName</h3>
-    @foreach (var property in Model.RecipeData.recipes)
+    @foreach (var property in Model.RecipeData.Recipes)
     {
 
-        if (property.Attributes.Count() != 0)
+        if (property.GroupAttributes.Count() != 0)
         {
             //            if (property.Attributes.FirstOrDefault(a=>a.Key == "BrowsableAttribute").Value.Count !=0)
-            var abc = property.Attributes.FirstOrDefault(a => a.Key == "BrowsableAttribute").Value.First().Value.ToString();
-            if (property.Attributes.FirstOrDefault(a=>a.Key == "BrowsableAttribute").Value.First().Value.ToString() == "True")
+            var abc = property.GroupAttributes.FirstOrDefault(a => a.Key == "BrowsableAttribute").Value.First().Value.ToString();
+            if (property.GroupAttributes.FirstOrDefault(a=>a.Key == "BrowsableAttribute").Value.First().Value.ToString() == "True")
             {
-            <text> @property.Attributes.FirstOrDefault(a=>a.Key == "DisplayNameAttribute").Value.Values.First().ToString() = @property.Value; </text>
+            <text> @property.GroupAttributes.FirstOrDefault(a=>a.Key == "DisplayNameAttribute").Value.Values.First().ToString() = @property.Value; </text>
                 <br/>
             }
         }

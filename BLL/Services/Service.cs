@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using BLL.Entities;
 using BLL.Interfaces;
 using ClassGenerator;
@@ -22,75 +23,89 @@ namespace BLL.Services
             DALInterface1 = dalInterface;
         }
 
-        private RecipeData GetRecipeData(ProcessData process)
+        private static List<PropertyClass> GetAllProperties(object entity)
         {
-            var recipeData = new RecipeData();
-            object Recipe = process.Recipes[0];
-
-           
+            
             List<PropertyClass> list = new List<PropertyClass>();
             Dictionary<string, PropertyClass> maiDictionary = new Dictionary<string, PropertyClass>();
 
-            
-            foreach (var property in Recipe.GetType().GetProperties())
+
+            foreach (var property in entity.GetType().GetProperties())
             {
-                var propertyClass= new PropertyClass();
-                propertyClass.Key = property.Name;
-                propertyClass.Value = property.GetValue(Recipe);
-                var CustomAttributesData = property.GetCustomAttributesData();
-                var atributeGroupDictionary = new Dictionary<string, Dictionary<string, object>>();
-                foreach (var attribute_groups in CustomAttributesData)
+                var propertyClass = new PropertyClass()
                 {
-                    var atributeDictionary = new Dictionary<string,object>();
-                    if (attribute_groups.NamedArguments.Count == 0)
+                    Key = property.Name,
+                    Value = property.GetValue(entity)
+                };
+                IList<CustomAttributeData> customAttributesData = property.GetCustomAttributesData();
+                Dictionary<string,object> Attributes = new Dictionary<string, object>();
+                if (customAttributesData != null)
+                    foreach (var attributeGroups in customAttributesData)
                     {
-                        var value = attribute_groups.ConstructorArguments.First().Value;
-                        var key = attribute_groups.ConstructorArguments.First().ArgumentType.ToString();
-                        atributeDictionary.Add(key, value);
-                     }
-                    else
-                    {
-                        atributeDictionary =
-                            attribute_groups.NamedArguments.ToDictionary
-                                (attribute => attribute.MemberName, attribute => attribute.TypedValue.Value);
-                        }
-                    atributeGroupDictionary.Add(attribute_groups.AttributeType.Name, atributeDictionary);
+                       if (attributeGroups.NamedArguments != null)
+                            foreach (var atribute in attributeGroups.NamedArguments)
+                            {
+                                Attributes.Add(atribute.MemberName, atribute.TypedValue);
+                            }
+
+                        if (attributeGroups.ConstructorArguments != null)
+                            foreach (var atribute in attributeGroups.ConstructorArguments)
+                            {
+                                Attributes.Add(attributeGroups.AttributeType.Name, atribute.Value);
+                            }
                     }
-                propertyClass.Attributes = atributeGroupDictionary;
-              
+                propertyClass.Attributes = Attributes;
                 list.Add(propertyClass);
-//                recipes_dict.Add(property.Name, propertyClass);
-//                recipes.Add(recipes_dict);
             }
-            recipeData.recipes = list;
-            return recipeData;
+            return list;
         }
 
-        private Dictionary<string, object> GetReportData(ProcessData process, int key)
+
+        private RecipeData GetRecipeData(ProcessData process)
         {
-            object Report = process.Reports[key];
+            var recipeData = new RecipeData();
+         
+            recipeData.Recipes = GetAllProperties(process.Recipes[0]);
+            recipeData.Chapters = GetChapters(recipeData.Recipes);
+           return recipeData;
+        }
 
-            var Report_dictionary = new Dictionary<string, object>();
 
-            foreach (var property in Report.GetType().GetProperties())
-                Report_dictionary.Add(property.Name, property.GetValue(Report));
-            return Report_dictionary;
+        private static List<object> GetChapters(List<PropertyClass> recipeData)
+        {
+            List<object> chapters = new List<object>();
+            foreach (var recipe in recipeData)
+            {
+                if (recipe.Attributes.Count != 0)
+                {
+                    if (chapters.Contains(recipe.Attributes.First(a => a.Key == "CategoryAttribute").Value) == false)
+                    {
+                        chapters.Add(recipe.Attributes.First(a => a.Key == "CategoryAttribute").Value);
+                    }
+                }
+            }
+            return chapters;
+        }
+
+
+        private static Dictionary<string, object> GetReportData(ProcessData process, int key)
+        {
+            object report = process.Reports[key];
+            return report.GetType().GetProperties().ToDictionary(property => property.Name, property => property.GetValue(report));
         }
 
 
         public DataBLL GetProcessData(int Id)
         {
-            var Data = new DataBLL();
-            Data.ReportDictionary = new List<Dictionary<string, object>>();
+            var data = new DataBLL {ReportDictionary = new List<Dictionary<string, object>>()};
             var process = DALInterface1.GetDataById(Id);
-            Data.ProcessData = process;
-            Data.RecipeData = GetRecipeData(process);
+            data.ProcessData = process;
+            data.RecipeData = GetRecipeData(process);
             for (var key = 0; key < process.Reports.Count; key++)
             {
-                var report = process.Reports[key];
-                Data.ReportDictionary.Add(GetReportData(process, key));
+                data.ReportDictionary.Add(GetReportData(process, key));
             }
-            return Data;
+            return data;
         }
 
         public int GetProcessDataCount()
