@@ -23,13 +23,8 @@ namespace MVC.Controllers
 
         public ActionResult Index()
         {
-            var Data = Service.GetProcessData(1);
-            List<SelectListItem> processes = new List<SelectListItem>();
-            processes.Add(new SelectListItem { Text = "", Value = "0" });
-//            Service.GetProcessDataCount();
-           
-            ViewBag.MovieType = processes;
-            return View(Data);
+            var Data = Service.GetProcessData();;
+            return View(Data[0]);
         }
 
         public ActionResult Select()

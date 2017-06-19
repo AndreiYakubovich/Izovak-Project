@@ -1,0 +1,55 @@
+c:\users\andrei yakubovich\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+c:\users\andrei yakubovich\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+c:\users\andrei yakubovich\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+c:\users\andrei yakubovich\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\bin\Debug\EntityFramework.dll
+c:\users\andrei yakubovich\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\andrei yakubovich\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\bin\Debug\System.Data.SQLite.dll
+c:\users\andrei yakubovich\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\bin\Debug\System.Data.SQLite.EF6.dll
+c:\users\andrei yakubovich\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\bin\Debug\System.Data.SQLite.Linq.dll
+c:\users\andrei yakubovich\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\bin\Debug\EntityFramework.xml
+c:\users\andrei yakubovich\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\andrei yakubovich\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\bin\Debug\System.Data.SQLite.xml
+c:\users\andrei yakubovich\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\bin\Debug\System.Data.SQLite.dll.config
+c:\users\andrei yakubovich\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csprojResolveAssemblyReference.cache
+c:\users\andrei yakubovich\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+c:\users\andrei yakubovich\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+C:\Users\Andrei Yakubovich\Documents\Visual Studio 2017\Projects\ConsoleApp1\ConsoleApp1\bin\Debug\ClassGenerator.dll
+C:\Users\Andrei Yakubovich\Documents\Visual Studio 2017\Projects\ConsoleApp1\ConsoleApp1\bin\Debug\MathNet.Numerics.dll
+C:\Users\Andrei Yakubovich\Documents\Visual Studio 2017\Projects\ConsoleApp1\ConsoleApp1\bin\Debug\ClassGenerator.pdb
+C:\Users\Andrei Yakubovich\Documents\Visual Studio 2017\Projects\ConsoleApp1\ConsoleApp1\bin\Debug\MathNet.Numerics.xml
+H:\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+H:\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+H:\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+H:\ConsoleApp1\ConsoleApp1\bin\Debug\EntityFramework.dll
+H:\ConsoleApp1\ConsoleApp1\bin\Debug\EntityFramework.SqlServer.dll
+H:\ConsoleApp1\ConsoleApp1\bin\Debug\System.Data.SQLite.dll
+H:\ConsoleApp1\ConsoleApp1\bin\Debug\System.Data.SQLite.EF6.dll
+H:\ConsoleApp1\ConsoleApp1\bin\Debug\System.Data.SQLite.Linq.dll
+H:\ConsoleApp1\ConsoleApp1\bin\Debug\MathNet.Numerics.dll
+H:\ConsoleApp1\ConsoleApp1\bin\Debug\ClassGenerator.pdb
+H:\ConsoleApp1\ConsoleApp1\bin\Debug\EntityFramework.xml
+H:\ConsoleApp1\ConsoleApp1\bin\Debug\EntityFramework.SqlServer.xml
+H:\ConsoleApp1\ConsoleApp1\bin\Debug\System.Data.SQLite.xml
+H:\ConsoleApp1\ConsoleApp1\bin\Debug\System.Data.SQLite.dll.config
+H:\ConsoleApp1\ConsoleApp1\bin\Debug\MathNet.Numerics.xml
+H:\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csprojResolveAssemblyReference.cache
+H:\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+H:\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+H:\ConsoleApp1\ConsoleApp1\bin\Debug\ClassGenerator.dll
+G:\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+G:\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+G:\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+G:\ConsoleApp1\ConsoleApp1\bin\Debug\ClassGenerator.dll
+G:\ConsoleApp1\ConsoleApp1\bin\Debug\EntityFramework.SqlServer.dll
+G:\ConsoleApp1\ConsoleApp1\bin\Debug\System.Data.SQLite.dll
+G:\ConsoleApp1\ConsoleApp1\bin\Debug\System.Data.SQLite.EF6.dll
+G:\ConsoleApp1\ConsoleApp1\bin\Debug\System.Data.SQLite.Linq.dll
+G:\ConsoleApp1\ConsoleApp1\bin\Debug\MathNet.Numerics.dll
+G:\ConsoleApp1\ConsoleApp1\bin\Debug\ClassGenerator.pdb
+G:\ConsoleApp1\ConsoleApp1\bin\Debug\EntityFramework.SqlServer.xml
+G:\ConsoleApp1\ConsoleApp1\bin\Debug\System.Data.SQLite.xml
+G:\ConsoleApp1\ConsoleApp1\bin\Debug\System.Data.SQLite.dll.config
+G:\ConsoleApp1\ConsoleApp1\bin\Debug\MathNet.Numerics.xml
+G:\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csprojResolveAssemblyReference.cache
+G:\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+G:\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb

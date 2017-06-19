@@ -62,7 +62,6 @@
   <ItemGroup>
     <Compile Include="Entities\PropertyClass.cs" />
     <Compile Include="Entities\DataBLL.cs" />
-    <Compile Include="Entities\InitOfData.cs" />
     <Compile Include="Interfaces\IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Service.cs" />

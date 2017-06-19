@@ -10,120 +10,141 @@ namespace BLL.Services
 {
     public class Service : IService
     {
-        public IMainDalInterface DALInterface1
-        {
-            get => DALInterface2;
-            set => DALInterface2 = value;
-        }
 
-        public IMainDalInterface DALInterface2 { get; set; }
+        private IMainDalInterface DalInterface { get;}
 
         public Service(IMainDalInterface dalInterface)
         {
-            DALInterface1 = dalInterface;
+            DalInterface = dalInterface;
         }
 
-        private static List<PropertyClass> GetAllProperties(object entity)
+        private static PropertyList GetAllProperties(object entity)
         {
-            
-            List<PropertyClass> list = new List<PropertyClass>();
-            Dictionary<string, PropertyClass> maiDictionary = new Dictionary<string, PropertyClass>();
 
-
-            foreach (var property in entity.GetType().GetProperties())
+            PropertyList list = new PropertyList();
+           foreach (var property in entity.GetType().GetProperties())
             {
                 var propertyClass = new PropertyClass()
                 {
-                    Key = property.Name,
+                    Name = property.Name,
                     Value = property.GetValue(entity)
                 };
                 IList<CustomAttributeData> customAttributesData = property.GetCustomAttributesData();
-                Dictionary<string,object> Attributes = new Dictionary<string, object>();
+                Dictionary<string, object> Attributes = new Dictionary<string, object>();
                 if (customAttributesData != null)
                     foreach (var attributeGroups in customAttributesData)
                     {
-                       if (attributeGroups.NamedArguments != null)
-                            foreach (var atribute in attributeGroups.NamedArguments)
-                            {
-                                Attributes.Add(atribute.MemberName, atribute.TypedValue);
-                            }
+                       foreach (var atribute in attributeGroups.NamedArguments)
+                        {
+                               Attributes.Add(atribute.MemberName, atribute.TypedValue);
+                        }
 
-                        if (attributeGroups.ConstructorArguments != null)
-                            foreach (var atribute in attributeGroups.ConstructorArguments)
-                            {
-                                Attributes.Add(attributeGroups.AttributeType.Name, atribute.Value);
-                            }
+                        foreach (var atribute in attributeGroups.ConstructorArguments)
+                        {
+                            Attributes.Add(attributeGroups.AttributeType.Name, atribute.Value);
+                        }
                     }
                 propertyClass.Attributes = Attributes;
+                if(propertyClass.Attributes.Count != 0 && propertyClass.Attributes.First(a=>a.Key== "BrowsableAttribute").Value.Equals(true))
                 list.Add(propertyClass);
             }
             return list;
         }
 
 
-        private List<InitOfData> GetData(ProcessData process, string entity)
+        private static CategoriesDictionary GetSortedProperties(PropertyList list)
         {
-            var data = new List<InitOfData>();
-            dynamic source = process.Recipes;
-            switch (entity)
+            CategoriesDictionary sortedProperies = new CategoriesDictionary();
+            
+            Dictionary<string, List<string>> Categories = GetCategoriesAndGroups(list);
+            foreach (var category in Categories)
             {
-                case "Recipe":
+                GroupsDictionary groups = new GroupsDictionary();
+                foreach (var @group in category.Value)
                 {
-                    source = process.Recipes;
-                    break;
+                    PropertyList propertyList = new PropertyList();
+                    foreach (var property in list)
+                    {
+                        if (property.Attributes.Count != 0 &&
+                            (property.Attributes.First(a => a.Key == "CategoryAttribute").Value.ToString() == category.Key && 
+                            property.Attributes.First(a => a.Key == "GroupName").Value.ToString() == @group))
+                            propertyList.Add(property);
+                    }
+                    groups.Add(@group, propertyList);
                 }
-                case "Report":
-                {
-                    source = process.Reports;
-                    break;
-                }   
+
+                sortedProperies.Add(category.Key,groups);
             }
-            for (var index = 0; index < source.Count; index++)
-            {
-                data.Add(new InitOfData());
-                data[index].Properties = GetAllProperties(source[index]);
-                data[index].Chapters = GetChapters(data[index].Properties);
-            }
-            return data;
+            return sortedProperies;
         }
 
-
-        private static List<object> GetChapters(List<PropertyClass> recipeData)
+        private static Dictionary<string, List<string>> GetCategoriesAndGroups(PropertyList list)
         {
-            List<object> chapters = new List<object>();
-            foreach (var recipe in recipeData)
+            Dictionary<string, List<string>> CategoriesAndGroups = new Dictionary<string, List<string>>();
+            List<object> categories = new List<object>();
+
+            foreach (var recipe in list)
             {
                 if (recipe.Attributes.Count != 0)
                 {
-                    if (chapters.Contains(recipe.Attributes.First(a => a.Key == "CategoryAttribute").Value) == false)
-                    {
-                        chapters.Add(recipe.Attributes.First(a => a.Key == "CategoryAttribute").Value);
-                    }
+                    if (categories.Contains(recipe.Attributes.First(a => a.Key == "CategoryAttribute").Value) == false)
+                        categories.Add(recipe.Attributes.First(a => a.Key == "CategoryAttribute").Value);
                 }
             }
-            return chapters;
+            foreach (var category in categories)
+            {
+                List<string> groups = new List<string>();
+                foreach (var recipe in list)
+                {
+                    if (recipe.Attributes.Count != 0 &&
+                        (recipe.Attributes.First(a => a.Key == "CategoryAttribute").Value.ToString() == category.ToString() &&
+                         (recipe.Attributes.ContainsKey("GroupName") && 
+                         groups.Contains(recipe.Attributes.First(a => a.Key == "GroupName").Value.ToString()) == false)))
+                        groups.Add(recipe.Attributes.First(a => a.Key == "GroupName").Value
+                            .ToString());
+                }
+                CategoriesAndGroups.Add(category.ToString(), groups);
+            }
+
+            return CategoriesAndGroups;
         }
 
-        public DataBLL GetProcessData(int Id)
+
+        private static List<CategoriesDictionary> GetReportData(ProcessData process)
         {
-            var data = new DataBLL();
-            var process = DALInterface1.GetDataById(Id);
-            data.ProcessData = process;
-            data.RecipeData = GetData(process,"Recipe");
-            data.ReportData = GetData(process, "Report");
+            return (from report in process.Reports let catdict = new CategoriesDictionary() select GetSortedProperties(GetAllProperties(report))).ToList();
+        }
+        
+
+        private static CategoriesDictionary GetRecipeData(ProcessData process)
+        {
+            CategoriesDictionary data = GetSortedProperties(GetAllProperties(process.Recipes[0]));
             return data;
         }
 
-        public int GetProcessDataCount()
-        {
-            var count = DALInterface1.GetCountandDates();
 
-            return count.Count;
+        public List<DataBLL> GetProcessData()
+        {
+            List<DataBLL> ListofProcessData = new List<DataBLL>();
+            
+            List<ProcessData> listOfProcess = DalInterface.GetData();
+            foreach (var process in listOfProcess)
+            {
+                var data = new DataBLL();
+                data.ProcessData = process;
+                if(process.Recipes.Count!=0)
+                    data.RecipeData = GetRecipeData(process);
+                if (process.Reports.Count != 0)
+                    data.ReportData = GetReportData(process);
+                ListofProcessData.Add(data);
+            }
+            return ListofProcessData;
         }
 
+     
         public string GetStuff()
         {
-            var process = GetProcessData(1);
+            var process = GetProcessData();
             return process.ToString();
         }
     }

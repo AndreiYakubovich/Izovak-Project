@@ -10,62 +10,47 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/CustomStyles.css" rel="stylesheet" />
 </head>
 <body>
+<div>
 <h4>Всякое</h4>
-<div class="Recipe">
-    <h3>Рецепт номер @Model.ProcessData.Recipes.First().RecipeName</h3>
-    
-    @foreach (var chapter in Model.RecipeData.First().Chapters)
-    {
-        <div>
-            <h3> @chapter.ToString()</h3> 
-            
-            @foreach (var property in Model.RecipeData.First().Properties)
-            {
-                if (property.Attributes.Count() != 0 && property.Attributes.First(p=>p.Key== "CategoryAttribute").Value.ToString() == chapter.ToString())
-                {
-                    //            if (property.Attributes.FirstOrDefault(a=>a.Key == "BrowsableAttribute").Value.Count !=0)
-                    var abc = property.Attributes.FirstOrDefault(a => a.Key == "BrowsableAttribute").Value;
-                    if (property.Attributes.FirstOrDefault(a => a.Key == "BrowsableAttribute").Value.ToString() == "True")
-                    {
-                        <text> @property.Attributes.FirstOrDefault(a => a.Key == "DisplayNameAttribute").Value.ToString() = @property.Value; </text>
-                        <br/>
-                    }
-                }
-            }
-
-        </div>
-    }
-
-
-   @* @foreach (var property in Model.RecipeData.First().Properties)
-    {
-
-        if (property.Attributes.Count() != 0)
+    <div >
+        @if (Model.RecipeData != null)
         {
-            //            if (property.Attributes.FirstOrDefault(a=>a.Key == "BrowsableAttribute").Value.Count !=0)
-            var abc = property.Attributes.FirstOrDefault(a => a.Key == "BrowsableAttribute").Value;
-            if (property.Attributes.FirstOrDefault(a=>a.Key == "BrowsableAttribute").Value.ToString() == "True")
-            {
-            <text> @property.Attributes.FirstOrDefault(a=>a.Key == "DisplayNameAttribute").Value.ToString() = @property.Value; </text>
-                <br/>
-            }
+            <h3>Рецепт номер @Model.ProcessData.Recipes.First().RecipeName</h3>
+
+
+            foreach (var category in Model.RecipeData)
+             {
+                 <div class="row table-bordered">
+                     <h2> @category.Key </h2>
+                     @foreach (var group in category.Value)
+                     {
+                         <div class="col-lg-3 Recipe col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1">
+                             <h3> @group.Key</h3>
+                             @foreach (var property in group.Value)
+                             {
+                                 @: @property.Attributes.FirstOrDefault(a => a.Key == "DisplayNameAttribute").Value.ToString() = @property.Value; <br/>
+                             }
+                         </div>
+                     }
+                 </div>
+             }
+
+
+
         }
-        else
-        {
-            <text>@property.Key =  @property.Value; </text>
-        }
-                
-    }*@
-</div>
-        
+
+             </div>
 <div>
     <h3>Отчёты:</h3>
     @for (var index = 0; index < Model.ProcessData.Reports.Count; index++)
     {
         var report = Model.ProcessData.Reports[index];
-        @:<div class ="col-lg-2,col-md-3,col-sm-4">
+        @:<div class="col-lg-2,col-md-3,col-sm-4">
         @:<text>Дата = @report.Date
         @:</text><br/>
         @:<text>Номер операции = @report.Number 
@@ -86,8 +71,9 @@
     }
 
 </div>
-     
+
 <p>
 </p>
+</div>
 </body>
 </html>
