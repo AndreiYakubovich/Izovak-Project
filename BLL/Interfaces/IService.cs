@@ -6,6 +6,6 @@ namespace BLL.Interfaces
 {
     public interface IService
     {
-        List<DataBLL> GetProcessData();
+        List<Data> GetProcessData();
     }
 }

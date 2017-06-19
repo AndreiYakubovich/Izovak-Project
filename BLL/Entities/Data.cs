@@ -7,13 +7,19 @@ using ClassGenerator;
 
 namespace BLL.Entities
 {
-    public class DataBLL
+    public class Data
     {
         
         public ProcessData ProcessData { get; set; }
         public CategoriesDictionary RecipeData  { get; set; }
         public List<CategoriesDictionary> ReportData { get; set; }
         
+    }
+    public class PropertyClass
+    {
+        public string Name { get; set; }
+        public object Value { get; set; }
+        public Dictionary<string, object> Attributes { get; set; }
     }
 
     public class CategoriesDictionary : Dictionary<string, GroupsDictionary>{}

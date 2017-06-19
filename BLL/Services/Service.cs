@@ -39,7 +39,7 @@ namespace BLL.Services
                                Attributes.Add(atribute.MemberName, atribute.TypedValue);
                         }
 
-                        foreach (var atribute in attributeGroups.ConstructorArguments)
+                       foreach (var atribute in attributeGroups.ConstructorArguments)
                         {
                             Attributes.Add(attributeGroups.AttributeType.Name, atribute.Value);
                         }
@@ -60,17 +60,17 @@ namespace BLL.Services
             foreach (var category in Categories)
             {
                 GroupsDictionary groups = new GroupsDictionary();
-                foreach (var @group in category.Value)
+                foreach (var group in category.Value)
                 {
                     PropertyList propertyList = new PropertyList();
                     foreach (var property in list)
                     {
                         if (property.Attributes.Count != 0 &&
                             (property.Attributes.First(a => a.Key == "CategoryAttribute").Value.ToString() == category.Key && 
-                            property.Attributes.First(a => a.Key == "GroupName").Value.ToString() == @group))
+                            property.Attributes.First(a => a.Key == "GroupName").Value.ToString() == group))
                             propertyList.Add(property);
                     }
-                    groups.Add(@group, propertyList);
+                    groups.Add(group, propertyList);
                 }
 
                 sortedProperies.Add(category.Key,groups);
@@ -123,14 +123,14 @@ namespace BLL.Services
         }
 
 
-        public List<DataBLL> GetProcessData()
+        public List<Data> GetProcessData()
         {
-            List<DataBLL> ListofProcessData = new List<DataBLL>();
+            List<Data> ListofProcessData = new List<Data>();
             
             List<ProcessData> listOfProcess = DalInterface.GetData();
             foreach (var process in listOfProcess)
             {
-                var data = new DataBLL();
+                var data = new Data();
                 data.ProcessData = process;
                 if(process.Recipes.Count!=0)
                     data.RecipeData = GetRecipeData(process);
